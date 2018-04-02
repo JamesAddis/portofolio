@@ -6,10 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{495A4AAE-3F0E-48BE-889F-FE6ADEC4E086}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cache", "Cache", "{30DFB88D-CECC-491B-A74F-1D551F456075}"
-	ProjectSection(SolutionItems) = preProject
-		Cache\DockerFile = Cache\DockerFile
-		Cache\redis.conf = Cache\redis.conf
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portofolio.Web.Api", "Web\Portofolio.Web.Api\Portofolio.Web.Api.csproj", "{6622E62D-1BB7-4910-B5E9-29749C34418F}"
 EndProject
@@ -64,6 +60,38 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portofolio.ORM.WebHooksDatabase", "Portofolio.ORM.WebHooksDatabase\Portofolio.ORM.WebHooksDatabase.csproj", "{640F5DCD-D940-4085-A07B-4A837193FA4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portofolio.ORM.NoSQLDatabase", "Portofolio.ORM.NoSQLDatabase\Portofolio.ORM.NoSQLDatabase.csproj", "{5BC94CB1-CEC4-49E1-A9A8-A40553FBB8BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queue", "Queue", "{38688BBB-731D-42BD-9683-133C02EB1D15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandQueue", "CommandQueue", "{93497A6C-2225-41AB-962A-EA99C118CEB4}"
+	ProjectSection(SolutionItems) = preProject
+		Queue\CommandQueue\DockerFile = Queue\CommandQueue\DockerFile
+		Queue\CommandQueue\rabbitmq.conf = Queue\CommandQueue\rabbitmq.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventQueue", "EventQueue", "{CB7BCE30-6234-49DC-B761-5EAC6C86B539}"
+	ProjectSection(SolutionItems) = preProject
+		Queue\EventQueue\DockerFile = Queue\EventQueue\DockerFile
+		Queue\EventQueue\rabbitmq.conf = Queue\EventQueue\rabbitmq.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebNotificationQueue", "WebNotificationQueue", "{A5112D8D-93A5-4ED7-B047-8803D7FE5DF3}"
+	ProjectSection(SolutionItems) = preProject
+		Queue\WebNotificationsQueue\DockerFile = Queue\WebNotificationsQueue\DockerFile
+		Queue\WebNotificationsQueue\rabbitmq.conf = Queue\WebNotificationsQueue\rabbitmq.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{406B8CC2-AB03-4671-9D49-28198ED0FEF2}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Portofolio.Database.SQLServer", "Portofolio.Database.SQLServer\Portofolio.Database.SQLServer.sqlproj", "{765C300B-F674-49D7-A1D8-FD3A7C452F11}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Protofolio.Database.NoSQL", "Protofolio.Database.NoSQL\Protofolio.Database.NoSQL.njsproj", "{DCEE2319-9F81-4183-B922-BE569C1F172C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{A5264F0C-AD6C-4B86-B2AE-4372171B2509}"
+	ProjectSection(SolutionItems) = preProject
+		Cache\Redis\DockerFile = Cache\Redis\DockerFile
+		Cache\Redis\redis.conf = Cache\Redis\redis.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +187,16 @@ Global
 		{5BC94CB1-CEC4-49E1-A9A8-A40553FBB8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC94CB1-CEC4-49E1-A9A8-A40553FBB8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC94CB1-CEC4-49E1-A9A8-A40553FBB8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +224,12 @@ Global
 		{29550A2E-AD0D-4D2E-A08E-1F59ACFCCE73} = {2F60CF3D-8B38-4F1B-95F4-F053FAD239FD}
 		{640F5DCD-D940-4085-A07B-4A837193FA4D} = {2F60CF3D-8B38-4F1B-95F4-F053FAD239FD}
 		{5BC94CB1-CEC4-49E1-A9A8-A40553FBB8BD} = {2F60CF3D-8B38-4F1B-95F4-F053FAD239FD}
+		{93497A6C-2225-41AB-962A-EA99C118CEB4} = {38688BBB-731D-42BD-9683-133C02EB1D15}
+		{CB7BCE30-6234-49DC-B761-5EAC6C86B539} = {38688BBB-731D-42BD-9683-133C02EB1D15}
+		{A5112D8D-93A5-4ED7-B047-8803D7FE5DF3} = {38688BBB-731D-42BD-9683-133C02EB1D15}
+		{765C300B-F674-49D7-A1D8-FD3A7C452F11} = {406B8CC2-AB03-4671-9D49-28198ED0FEF2}
+		{DCEE2319-9F81-4183-B922-BE569C1F172C} = {406B8CC2-AB03-4671-9D49-28198ED0FEF2}
+		{A5264F0C-AD6C-4B86-B2AE-4372171B2509} = {30DFB88D-CECC-491B-A74F-1D551F456075}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96809BAB-8AC4-487C-AC69-AAFA36194C76}

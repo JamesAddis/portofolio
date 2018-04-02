@@ -1,0 +1,9 @@
+{
+  "name": "protofolio.database.no-sql",
+  "version": "0.0.0",
+  "description": "Protofolio.Database.NoSQL",
+  "main": "app.js",
+  "author": {
+    "name": "Bandaged"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "portofolio.database.posgres-sqlserver",
+  "version": "0.0.0",
+  "description": "Portofolio.Database.PosgresSQLServer",
+  "main": "app.js",
+  "author": {
+    "name": "Bandaged"
+  }
+}

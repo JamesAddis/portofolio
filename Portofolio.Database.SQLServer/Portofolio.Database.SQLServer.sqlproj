@@ -57,5 +57,31 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="procedures" />
+    <Folder Include="tables" />
+    <Folder Include="users" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="procedures\uspAddObjective.sql" />
+    <Build Include="procedures\uspAddSubObjective.sql" />
+    <Build Include="procedures\uspCreateToDo.sql" />
+    <Build Include="procedures\uspDeleteToDo.sql" />
+    <Build Include="procedures\uspRemoveObjective.sql" />
+    <Build Include="procedures\uspRemoveSubObjectives.sql" />
+    <Build Include="procedures\uspUpdateObjective.sql" />
+    <Build Include="procedures\uspUpdateSubObjective.sql" />
+    <Build Include="procedures\uspUpdateToDo.sql" />
+    <Build Include="tables\objectives.sql" />
+    <Build Include="tables\subobjectives.sql" />
+    <Build Include="tables\todo.sql" />
+    <Build Include="tables\users.sql" />
+    <Build Include="users\reader-only.sql" />
+    <Build Include="users\read-write.sql" />
+    <Build Include="users\writer-only.sql" />
+    <Build Include="db.sql" />
+    <Build Include="tables\webhooks.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DockerFile" />
   </ItemGroup>
 </Project>

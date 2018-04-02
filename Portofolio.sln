@@ -85,13 +85,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{40
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Portofolio.Database.SQLServer", "Portofolio.Database.SQLServer\Portofolio.Database.SQLServer.sqlproj", "{765C300B-F674-49D7-A1D8-FD3A7C452F11}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Protofolio.Database.NoSQL", "Protofolio.Database.NoSQL\Protofolio.Database.NoSQL.njsproj", "{DCEE2319-9F81-4183-B922-BE569C1F172C}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Protofolio.Database.MongoServer", "Protofolio.Database.NoSQL\Protofolio.Database.MongoServer.njsproj", "{DCEE2319-9F81-4183-B922-BE569C1F172C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{A5264F0C-AD6C-4B86-B2AE-4372171B2509}"
 	ProjectSection(SolutionItems) = preProject
 		Cache\Redis\DockerFile = Cache\Redis\DockerFile
 		Cache\Redis\redis.conf = Cache\Redis\redis.conf
 	EndProjectSection
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Portofolio.Database.PosgresSQLServer", "Portofolio.Database.PosgresSQLServer\Portofolio.Database.PosgresSQLServer.njsproj", "{71CC2BD1-A104-4CA8-80A7-8E9D5721AD80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -197,6 +199,10 @@ Global
 		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCEE2319-9F81-4183-B922-BE569C1F172C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71CC2BD1-A104-4CA8-80A7-8E9D5721AD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71CC2BD1-A104-4CA8-80A7-8E9D5721AD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71CC2BD1-A104-4CA8-80A7-8E9D5721AD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71CC2BD1-A104-4CA8-80A7-8E9D5721AD80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -230,6 +236,7 @@ Global
 		{765C300B-F674-49D7-A1D8-FD3A7C452F11} = {406B8CC2-AB03-4671-9D49-28198ED0FEF2}
 		{DCEE2319-9F81-4183-B922-BE569C1F172C} = {406B8CC2-AB03-4671-9D49-28198ED0FEF2}
 		{A5264F0C-AD6C-4B86-B2AE-4372171B2509} = {30DFB88D-CECC-491B-A74F-1D551F456075}
+		{71CC2BD1-A104-4CA8-80A7-8E9D5721AD80} = {406B8CC2-AB03-4671-9D49-28198ED0FEF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96809BAB-8AC4-487C-AC69-AAFA36194C76}

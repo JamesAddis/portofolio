@@ -1,4 +1,7 @@
 
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
+
 namespace ToDo.RestApi.OutputModels
 {
     public static class ErrorOutputModelHelpers

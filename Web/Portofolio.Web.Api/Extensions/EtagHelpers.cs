@@ -1,3 +1,5 @@
+using System;
+
 namespace ToDo.RestApi.Infrastructure
 {
     public static class EtagHelpers

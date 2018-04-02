@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ToDo.RestApi.OutputModels
 {
     public class ErrorOutputModel

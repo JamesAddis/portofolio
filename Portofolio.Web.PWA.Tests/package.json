@@ -1,0 +1,12 @@
+{
+  "name": "portofolio.web.pwa.tests",
+  "version": "0.0.0",
+  "description": "Portofolio.Web.PWA.Tests",
+  "main": "app.js",
+  "author": {
+    "name": "Bandaged"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.87"
+  }
+}

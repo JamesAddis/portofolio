@@ -1,0 +1,23 @@
+<form id="create-form" asp-route="@Constants.Routes.ToDoControllerRoutes.PostSubmit" method="post">
+    <header>
+        <h1>Create</h1>
+        <h2 id="success-mesage" class="text-success" role="status">@ViewData["SuccessMessage"]</h2>
+        <h2 id="error-mesage" class="text-danger" role="status">@ViewData["ErrorMessage"]</h2>
+        <validation-summary></validation-summary>
+    </header>
+    @Html.Partial("_ToDoEdit")
+    <footer>
+        <button type="submit" class="btn btn-primary">   
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span class="sr-only">Submit</span>
+        </button>
+        <a asp-route="@Constants.Routes.ToDoControllerRoutes.GetCreatePage">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+            <span class="sr-only">Reload</span>
+        </a>
+        <a asp-route="@Constants.Routes.ToDoControllerRoutes.GetListPage">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span class="sr-only">List</span>
+        </a>
+    </footer>
+</form>

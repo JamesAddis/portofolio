@@ -1,0 +1,98 @@
+<li [ngClass]="objectiveClass">
+    <div [ngClass]="{'form-group':true', 'has-error':nameInvalid">
+        <label [attr.for]="nameID" class="control-label col-md-2">Name</label>
+        <div class="col-md-10">
+            <div class="input-group">
+                <input [attr.id]="nameID" 
+                    class="form-control" 
+                    [attr.name]="nameAttr"
+                    required 
+                    minlength="3" 
+                    maxlength="250"
+                    formcontrolname="name"
+                    [(ngModel)]="name"
+                    (change)="nameChange($event)"
+                    [attr.invalid]="nameControlInvalid"
+                    [attr.aria-describedby]="nameErrorMessageID"/>
+                <span class="input-group-addon">
+                    <i [ngClass]="nameIcon" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <em [attr.id]="nameErrorMessageID" [ngClass]="nameErrorMessageClass">
+            {{nameErrorMessage}}
+        </em>
+    </div>
+    
+    <div [ngClass]="{'form-group':true', 'has-error':summaryInvalid">
+        <label [attr.for]="summaryID" class="control-label col-md-2">Summary</label>
+        <div class="col-md-10">
+            <div class="input-group">
+                <textarea [attr.id]="summaryID" 
+                    class="form-control" 
+                    [attr.name]="summaryAttr" 
+                    required 
+                    minlength="3" 
+                    maxlength="500"
+                    formcontrolname="summary"
+                    [(ngModel)]="summary"
+                    (change)="summaryChange($event)"
+                    [attr.invalid]="summaryControlInvalid"
+                    [attr.aria-describedby]="summaryErrorMessageID">
+                </textarea>
+                <span class="input-group-addon">
+                    <i [ngClass]="summaryIcon" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <em [attr.id]="summaryErrorMessageID" [ngClass]="summaryErrorMessageClass">
+            {{summaryErrorMessage}}
+        </em>
+    </div>
+
+    <div [ngClass]="{'form-group':true', 'has-error':completeInvalid">
+        <div class="checkbox">
+            <div class="input-group">
+                <label [attr.for]="completeID" class="control-label">
+                    <input [attr.id]="completeID"
+                        type="checkbox"
+                        class="form-control"
+                        [attr.name]="completeAttr"
+                        formcontrolname="complete"
+                        (change)="completeChange($event)"
+                        [(ngModel)]="complete"
+                        [attr.invalid]="completeControlInvalid"
+                        [attr.aria-describedby]="completeErrorMessageID"/>
+                </label>  
+                <span class="input-group-addon">
+                    <i [ngClass]="completeIcon" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <em [attr.id]="completeErrorMessageID" [ngClass]="completeErrorMessageClass">
+            {{completeErrorMessage}}
+        </em>
+    </div>
+    <fieldset>
+        <legend [attr.id]="subObjectivesLabelID"></legend>
+        <ol [attr.id]="subObjectivesID">
+            <todo-subobjective 
+                *ngFor="let subObj of subObjectives; let i=index;" 
+                [objectiveIndex]="objectiveIndex" 
+                [subObjectiveIndex]="i"
+                (removed)="removeSubObjective(i)"></todo-subobjective>
+        </ol>
+        <button type="submit" class="btn btn-default" (click)="addSubObjective($event)">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span class="sr-only">
+                Add Sub-Objective
+            </span>
+        </button>
+    </fieldset>
+    <button type="submit" class="btn btn-danger" (click)="remove($event)">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        <span class="sr-only">
+            Remove Objective
+        </span>
+    </button>
+</li>

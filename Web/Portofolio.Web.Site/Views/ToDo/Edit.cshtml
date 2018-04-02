@@ -1,0 +1,45 @@
+<form id="edit-form" asp-route="@Constants.Routes.ToDoControllerRoutes.PostUpate" asp-route-id="@Model.ID" method="post">
+    <input name="@Html.NameFor(x=>x.LastModified)" type="hidden" value="@Html.ValueFor(x=>x.LastModified)"/>
+    <header>
+        <h1>Edit</h1>
+        <h2 id="success-mesage" class="text-success" role="status">@ViewData["SuccessMessage"]</h2>
+        <h2 id="error-mesage" class="text-danger" role="status">@ViewData["ErrorMessage"]</h2>
+        <validation-summary></validation-summary>
+    </header>
+    @Html.Partial("_ToDoEdit")
+    <footer>
+        <div class="form-group">
+            <label asp-for="LastModified" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <p id="@Html.IdFor(x=>xLastModified)" class="form-control-static">
+                    @if(Model.LastModifed.HasValue)
+                    {
+                        <time datetime="@Model.LastModified.Value.ToUniversalString()">
+                            @Model.LastModified.Value.ToLocalString()
+                        </time>
+                    }
+                </p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">   
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span class="sr-only">Update</span>
+        </button>
+        <a asp-route="@Constants.Routes.ToDoControllerRoutes.GetDeletePage" asp-route-id="@Model.ID">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <span class="sr-only">Delete</span>
+        </a>  
+        <a asp-route="@Constants.Routes.ToDoControllerRoutes.GetCreatePage">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span class="sr-only">Create new</span>
+        </a>
+        <a asp-route="@Constants.Routes.ToDoControllerRoutes.GetDeletePage" asp-route-id="@Model.ID">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+            <span class="sr-only">Reload</span>
+        </a>
+        <a asp-route="@Constants.Routes.ToDoControllerRoutes.GetListPage">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span class="sr-only">List</span>
+        </a>
+    </footer>
+</form>

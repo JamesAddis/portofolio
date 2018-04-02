@@ -1,0 +1,118 @@
+<form id="edit-form" [attr.action]="formUrl" method="post" (ngSubmit)="submit($event)">
+    <input type="hidden" name="LastModified" [attr.value]="lastModified | date:'yyyy-MM-dd HH:mm:ss'"/>
+    <header>
+        <h1>Edit</h1>
+        <h2 id="message" [ngClass]="messageClass" [innerText]="message"></h2>
+        <div [ngClass]="summaryClass">
+            <ul>
+                <li *ngfor="let error of formErrors">
+                    <a [href]="error.link" pageScroll (click)="error.nav($event)">
+                        {{error.displayName}}: {{error.message}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <fieldset>
+        <legend>Todo</legend>
+        <div [ngClass]="{'form-group':true', 'has-error':nameInvalid }">
+            <label [attr.for]="nameID" class="control-label col-md-2">
+                Name
+            </label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <input [attr.id]="nameID" 
+                        class="form-control" 
+                        [attr.name]="nameAttr"
+                        formcontrolname="name"
+                        required 
+                        minlength="3" 
+                        maxlength="250"
+                        [attr.invalid]="nameInvalid"
+                        [attr.aria-describedby]="nameErrorMessageID"/>
+                    <span class="input-group-addon">
+                        <i [ngClass]="nameIcon" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+            <em [attr.id]="nameErrorMessageID" [ngClass]="nameErrorMessageClass">
+                {{nameErrorMessage}}
+            </em>
+        </div>
+            
+        <div [ngClass]="{'form-group':true', 'has-error':summaryInvalid">
+            <label [attr.for]="summaryID" class="control-label col-md-2">
+                Summary
+            </label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <textarea [attr.id]="summaryID" 
+                        class="form-control" 
+                        [attr.name]="summaryAttr" 
+                        required 
+                        minlength="3" 
+                        maxlength="500"
+                        [attr.invalid]="summaryControlInvalid"
+                        [attr.aria-describedby]="summaryErrorMessageID">
+                    </textarea>
+                    <span class="input-group-addon">
+                        <i [ngClass]="summaryIcon" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+            <em [attr.id]="summaryErrorMessageID" [ngClass]="summaryErrorMessageClass">
+                {{summaryErrorMessage}}
+            </em>
+        </div>
+        <fieldset>
+            <legend id="lbl-Objectives">Objectives</legend>
+            <ol id="Objectives">
+                <todo-objective *ngFor="let obj of inputModel.objectives; let i = index;" 
+                    [objectiveIndex]="i"
+                    [objective]="obj" 
+                    [validationErrors]="validationErrors" 
+                    (removed)="removeObjective(i)">
+                </todo-objective>
+            </ol>
+            <button class="btn btn-default"
+                type="submit"
+                [attr.formaction]="addObjectiveUrl"
+                [attr.name]="addObjectiveName"
+                [attr.value]="addObjectiveValue"
+                (click)="addObjective($event)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span class="sr-only">Add Objective</span>
+            </button>
+        </fieldset>
+    </fieldset>
+    <footer>
+        <div class="form-group">
+            <label for="LastModified" class="control-label col-md-2">
+                Last Modified
+            </label>
+            <div class="col-md-10">
+                <p id="LastModified" class="form-control-static">
+                    <time [datetime]="lastModified | date:'yyyy-MM-dd HH:mm:ss'">
+                        {{ lastModified | date:'dd/MM/yyyy HH:mm:ss' }}
+                    </time>
+                </p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span class="sr-only">Update</span>
+        </button>
+        <a [routerLink]="deleteUrl" class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <span class="sr-only">Delete</span>
+        </a>
+        <a routerLink="/todo/create" class="btn btn-default">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span class="sr-only">Create New</span>
+        </a>
+        <a [routerLink]="formUrl" class="btn btn-default" (click)="refresh($event)">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+            <span class="sr-only">Refresh</span>
+        </a>
+    </footer>
+</form>

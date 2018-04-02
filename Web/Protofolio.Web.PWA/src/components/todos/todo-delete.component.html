@@ -1,0 +1,93 @@
+<form id="delete-form" [attr.action]="formUrl" method="post" (ngSubmit)="submit($event)">
+    <input type="hidden" name="LastModified" [attr.value]="lastModified"/>
+    <header>
+        <h1>Delete Todo</h1>
+        <h2 id="success-message" class="success-message" role="status" [innerText]="successMessage"></h2>
+        <h2 id="error-message" class="error-message" role="status" [innerText]="errorMessage"></h2>
+    </header>
+    <fieldset>
+        <legend>Todo</legend>
+        <div class="form-group">
+            <label for="Name" class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+                <p id="Name" class="form-control-static">{{name}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Summary" class="col-md-2 control-label">Summary</label>
+            <div class="col-md-10">
+                <p id="Summary" class="form-control-static">{{summary}}</p>
+            </div>
+        </div>
+        <fieldset>
+            <legend>Objectives</legend>
+            <ol>
+                <li *ngfor="let obj in objectives" [ngClass]="{'set-completed':obj.complete}">
+                    <div class="form-group">
+                        <label [attr.for]="obj.nameID" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-10">
+                            <p [attr.id]="obj.nameID" class="form-control-static">{{obj.name}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [attr.for]="obj.summaryID" class="col-md-2 control-label">Summary</label>
+                        <div class="col-md-10">
+                            <p [attr.id]="obj.summaryID" class="form-control-static">{{obj.summary}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [attr.for]="obj.completeID" class="col-md-2 control-label">
+                            Complete
+                            <input [attr.id]="obj.completeID" type="checkbox" readonly [checked]="obj.complete"/>
+                        </label>
+                    </div>
+                    <fieldset *ngIf="obj.subObjectivesSet">
+                        <legend>Sub Objectives</legend>
+                        <ol>
+                            <li *ngFor="let subObj of obj.subObjectives" [ngClass]="{completed:subObj.complete}">  
+                                <div class="form-group">
+                                    <label [attr.for]="subObj.nameID" class="col-md-2 control-label">Name</label>
+                                    <div class="col-md-10">
+                                        <p [attr.id]="subObj.nameID" class="form-control-static">{{subObj.name}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label [attr.for]="subObj.summaryID" class="col-md-2 control-label">Summary</label>
+                                    <div class="col-md-10">
+                                        <p [attr.id]="subObj.summaryID" class="form-control-static">{{subObj.summary}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label [attr.for]="subObj.completeID" class="col-md-2 control-label">
+                                        Complete
+                                        <input [attr.id]="subObj.completeID" type="checkbox" readonly [checked]="subObj.complete"/>
+                                    </label>
+                                </div>      
+                            </li>
+                        </ol>
+                    </fieldset>
+                </li>
+            </ol>
+        </fieldset>
+    </fieldset>
+    <footer>
+        <div class="form-group">
+            <label for="LastModified" class="control-label col-md-2">Last Modified</label>
+            <div class="col-md-10">
+                <p id="LastModified" class="form-control-static">{{lastModified | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+            </div>
+        </div>
+        <button class="btn btn-danger" type="submit">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <span class="sr-only">Delete</span>
+        </button>
+        <a routerLink="/todos" class="btn btn-default">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span class="sr-only">List</span>
+        </a>
+        <a [routerLink]="formUrl" class="btn btn-default" (click)="refresh($event)">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+            <span class="sr-only">Refresh</span>                
+        </a>
+    </footer>
+</form>

@@ -1,0 +1,20 @@
+namespace ToDo.RestApi.InputModels
+
+table ToDoSubObjectiveInputModel{
+    Name:string;
+    Summary:string;
+    Complete:bool;
+}
+
+table ToDoObjectiveInputModel{
+    Name:string;
+    Summary:string;
+    Complete:bool;
+    SubObjectives:[ToDoSubObjectiveInputModel];
+}
+
+table ToDoInputModel{
+    Name:string;
+    Summary:string;
+    Objectives:[ToDoObjectiveInputModel];
+}

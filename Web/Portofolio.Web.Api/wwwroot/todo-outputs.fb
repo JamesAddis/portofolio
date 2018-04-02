@@ -1,0 +1,34 @@
+namespace ToDo.RestApi.OutputModels
+
+struct DateTime{
+    Day:int,
+    Month:int,
+    Year:int,
+    Hour:int,
+    Minute:int,
+    Second:int
+}
+
+table ToDoSubObjectiveOutputModel{
+    Name:string;
+    Summary:string;
+    Complete:bool= false (required);
+}
+
+table ToDoObjectiveOutputModel{
+    Name:string;
+    Summary:string;
+    Complete:bool= false (required);
+    SubObjectives:[ToDoSubObjectiveOutputModel]=[] (required);
+}
+
+table ToDoOutputModel{
+    ID:int (required);
+    Name:string;
+    Summary:string;
+    DateCreated:DateTime (required);
+    DateUpdated:DateTime;
+    UserCreatedID:string (required);
+    UserUpdatedID:string;
+    Objectives:[ToDoObjectiveOutputModel] =[] (required);
+}

@@ -1,0 +1,130 @@
+<div id="todo-list">
+    <header>
+        <h1>Todos</h1>
+        <h2 id="success-message" class="text-success" role="status" [innerText]="successMessage"></h2>
+        <h2 id="error-message" class="text-danger" role="status" [innerText]="errorMessage"></h2>
+        <div [ngClass]="{'validation-summary-valid':valid, 'validation-summary-invalid':invalid}">
+            <ul *ngfor="let error of formErrors">
+                <li>
+                    <a [href]="error.link" pageScroll>{{error.message}}</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td colspan="6">
+                            <form class="form-inline" 
+                                method="get" 
+                                action="/todos" 
+                                (ngSubmit)="goToPageSubmit($event)">
+                                <input type="hidden" 
+                                    *ngFor="let hiddenInput of hiddenInputs" 
+                                    [attr.name]="hiddenInput.name" 
+                                    [attr.value]="hiddenInput.value" />
+                                <div class="form-group">                                
+                                    <label for="Page1" class="control-label col-md-2">Page</label>
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <input id="Page1" 
+                                                formcontrolname="page" 
+                                                class="form-control" 
+                                                type="number" 
+                                                name="Page"
+                                                step="1" 
+                                                min="1"
+                                                aria-describedby="Page1-error" 
+                                                [attr.aria-invalid]="pageControlInvalid" 
+                                                [max]="maxPage" 
+                                                [(ngModel)]="newPage"/>
+                                            <span class="input-group-addon">
+                                                of {{maxPage}}
+                                            </span>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default">
+                                                    Go to page
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <em id="Page1-error" [ngClass]="pageErrorMessageClass">{{pageErrorMessage}}</em>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <form class="form-inline" 
+                                method="get" 
+                                action="/todos" 
+                                (ngSubmit)="goToPageSubmit($event)">
+                                <input type="hidden" 
+                                    *ngFor="let hiddenInput of hiddenInputs" 
+                                    [attr.name]="hiddenInput.name" 
+                                    [attr.value]="hiddenInput.value" />
+                                <div class="form-group">                                
+                                    <label for="Page2" class="control-label col-md-2">Page</label>
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <input id="Page2"
+                                                formcontrolname="page"
+                                                class="form-control"
+                                                type="number"
+                                                name="Page"
+                                                step="1"
+                                                min="1"
+                                                aria-describedby="Page2-error"
+                                                [attr.aria-invalid]="pageControlInvalid"
+                                                [max]="maxPage"
+                                                [(ngModel)]="newPage"/>
+                                            <span class="input-group-addon">
+                                                of {{maxPage}}
+                                            </span>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default">
+                                                    Go to page
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <em id="Page2-error" [ngClass]="pageErrorMessageClass">{{pageErrorMessage}}</em>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+    <footer>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a routerLink="/todo"></a>
+    </footer>
+</div>

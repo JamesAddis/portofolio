@@ -1,0 +1,99 @@
+<form id="create-form" action="/todo/create" method="post" (submit)="submit($event)">
+    <header>
+        <h1>Create</h1>
+        <h2 id="success-message" class="text-success" role="status" [innerText]="successMessage"></h2>
+        <h2 id="error-message" class="text-danger" role="status" [innerText]="errorMessage"></h2>
+        <div [ngClass]="{'validation-summary-valid':valid, 'validation-summary-invalid':invalid}">
+            <ul>
+                <li *ngfor="let error of formErrors">
+                    <a [href]="error.link" pageScroll (click)="error.nav($event)">{{error.displayName}}: {{error.message}}</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <fieldset>
+        <legend>Todo</legend>
+        <div [ngClass]="{'form-group':true', 'has-error':nameInvalid">
+            <label [attr.for]="nameID" class="control-label col-md-2">
+                Name
+            </label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <input [attr.id]="nameID" 
+                        class="form-control" 
+                        [attr.name]="nameAttr"
+                        formcontrolname="name"
+                        required 
+                        minlength="3" 
+                        maxlength="250"
+                        [attr.invalid]="nameControlInvalid"
+                        [attr.aria-describedby]="nameErrorMessageID"/>
+                    <span class="input-group-addon">
+                        <i [ngClass]="nameIcon" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+            <em [attr.id]="nameErrorMessageID" [ngClass]="nameErrorMessageClass">
+                {{nameErrorMessage}}
+            </em>
+        </div>
+        <div [ngClass]="{'form-group':true', 'has-error':summaryInvalid">
+            <label [attr.for]="summaryID" class="control-label col-md-2">
+                Summary
+            </label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <textarea [attr.id]="summaryID" 
+                        class="form-control" 
+                        [attr.name]="summaryAttr" 
+                        required 
+                        minlength="3" 
+                        maxlength="500"
+                        [attr.invalid]="summaryControlInvalid"
+                        [attr.aria-describedby]="summaryErrorMessageID">
+                    </textarea>
+                    <span class="input-group-addon">
+                        <i [ngClass]="summaryIcon" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+            <em [attr.id]="summaryErrorMessageID" [ngClass]="summaryErrorMessageClass">
+                {{summaryErrorMessage}}
+            </em>
+        </div>
+        <fieldset>
+            <legend id="lbl-Objectives">Objectives</legend>
+            <ol id="Objectives">
+                <todo-objective *ngFor="let obj of inputModel.objectives; let i = index;" 
+                    [objectiveIndex]="i"
+                    [objective]="obj" 
+                    [validationErrors]="validationErrors" 
+                    (removed)="removeObjective(i)">
+                </todo-objective>
+            </ol>
+            <button class="btn btn-default"
+                type="submit"
+                [attr.formaction]="addObjectiveUrl"
+                [attr.name]="addObjectiveName"
+                [attr.value]="addObjectiveValue"
+                (click)="addObjective($event)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span class="sr-only">Add Objective</span>
+            </button>
+        </fieldset>
+    </fieldset>
+    <footer>
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span class="sr-only">Submit</span>
+        </button>
+        <a routerLink="/todos" class="btn btn-default">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span class="sr-only">List</span>
+        </a>
+        <a routerLink="/todo/create" class="btn btn-default" (click)="refresh($event)">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+            <span class="sr-only">Refresh</span>
+        </a>
+    </footer>
+</form>

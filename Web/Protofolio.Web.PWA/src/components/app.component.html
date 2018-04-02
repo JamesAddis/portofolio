@@ -1,0 +1,28 @@
+<div class="page" role="presentation">
+    <header id="header">
+        <nav>
+             
+        </nav>
+    </header>
+    <div id="body">
+        <main id="main" *ngSwitch="status">
+            <router-outlet *ngcase="'active'"></router-outlet>
+            <loading-modal *ngcase="'loading'"></loading-modal>
+        </main>
+        <footer id="footer">
+            <div>
+                <ul>
+                    <li>
+                        <span id="copy-right-year">
+                            <time [attr.datetime]="year">{{year}}</time>
+                        </span>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+            <div>
+
+            </div>
+        </footer>
+    </div>
+</div>
